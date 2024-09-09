@@ -11,6 +11,15 @@ void main() {
       expect(trim('  Hell    o    World'), 'Hell o World');
     });
 
+    test('replaceBetween', () {
+      expect(replaceBetween('hello[world]', '[', ']', ''), 'hello');
+      expect(replaceBetween("hello'test'world'test2'!!", "'", "'", ''), 'helloworld!!');
+      expect(replaceBetween('hello[w]o[r][[l]][[d]]!!', '[', ']', ''), 'helloo]]!!');
+      expect(replaceBetween('abc[hello]def[world]g[!!!]', '[', ']', ''), 'abcdefg');
+      expect(replaceBetween('abc<<def>>ghi<<jkl>>mn', '<<', '>>', ''), 'abcghimn');
+      expect(replaceBetween('hell1o2~', '1', '2', 'o!'), 'hello!~');
+    });
+
     test('capitalizeFirst', () {
       expect(capitalizeFirst('t'), 'T');
       expect(capitalizeFirst('test'), 'Test');

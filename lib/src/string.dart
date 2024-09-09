@@ -8,6 +8,14 @@ String trim(String str) {
   return result.replaceAll(RegExp(r'\s{2,}'), ' ');
 }
 
+String replaceBetween(String str, String startChar, String endChar, String replaceWith) {
+  final RegExp specialCharacters = RegExp(r'[.*+?^${}()|[\]\\]');
+  final String startCharRegExp = specialCharacters.hasMatch(startChar) ? '\\$startChar' : startChar;
+  final String endCharRegExp = specialCharacters.hasMatch(endChar) ? '\\$endChar' : endChar;
+
+  return str.replaceAll(RegExp('$startCharRegExp.*?$endCharRegExp'), replaceWith);
+}
+
 String capitalizeFirst(String str) {
   return '${str[0].toUpperCase()}${str.substring(1)}';
 }
