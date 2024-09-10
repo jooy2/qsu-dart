@@ -9,6 +9,7 @@
 - Add `contains` method
 - Add `capitalizeEachWords` method
 - Add `strCount` method
+- Add `sleep` method
 
 ## 0.0.1 (2024-09-02) - Not for Production
 
