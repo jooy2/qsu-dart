@@ -10,6 +10,10 @@ String trim(String str) {
   return result.replaceAll(RegExp(r'\s{2,}'), ' ');
 }
 
+String removeSpecialChar(String str, {String? exceptionCharacters}) {
+  return str.replaceAll(RegExp('[^a-zA-Z가-힣ㄱ-ㅎㅏ-ㅣ0-9\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f${exceptionCharacters ?? ''}]'), '');
+}
+
 String replaceBetween(String str, String startChar, String endChar, String replaceWith) {
   final RegExp specialCharacters = RegExp(r'[.*+?^${}()|[\]\\]');
   final String startCharRegExp = specialCharacters.hasMatch(startChar) ? '\\$startChar' : startChar;

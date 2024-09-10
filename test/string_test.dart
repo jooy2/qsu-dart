@@ -11,6 +11,15 @@ void main() {
       expect(trim('  Hell    o    World'), 'Hell o World');
     });
 
+    test('removeSpecialChar', () {
+      expect(removeSpecialChar('1　2！3☆4＠5＋6─🌍'), '123456');
+      expect(removeSpecialChar('Hello, World!'), 'HelloWorld');
+      expect(removeSpecialChar('12 34-56,78=90'), '1234567890');
+      expect(removeSpecialChar('ABC가나다ㄱㄴㄷㅏㅑㅓ天地人'), 'ABC가나다ㄱㄴㄷㅏㅑㅓ天地人');
+      expect(removeSpecialChar('Hello World!', exceptionCharacters: ' '), 'Hello World');
+      expect(removeSpecialChar('Hello-qsu & World!', exceptionCharacters: '-&!'), 'Hello-qsu&World!');
+    });
+
     test('replaceBetween', () {
       expect(replaceBetween('hello[world]', '[', ']', ''), 'hello');
       expect(replaceBetween("hello'test'world'test2'!!", "'", "'", ''), 'helloworld!!');
