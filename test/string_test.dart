@@ -45,6 +45,12 @@ st'''), 'test');
       expect(capitalizeEverySentence('hello!world!', splitChar: '!'), 'Hello!World!');
     });
 
+    test('capitalizeEachWords', () {
+      expect(capitalizeEachWords('hello, world!'), 'Hello, World!');
+      expect(capitalizeEachWords('test'), 'Test');
+      expect(capitalizeEachWords('this is the test sentence.', natural: true), 'This is the Test Sentence.');
+    });
+
     test('truncate', () {
       expect(truncate('test', 2), 'te');
       expect(truncate('test', 1, ellipsis: '...'), 't...');

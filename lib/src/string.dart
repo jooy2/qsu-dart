@@ -1,3 +1,5 @@
+import 'package:qsu/qsu.dart';
+
 String trim(String str) {
   if (str.isEmpty) {
     return '';
@@ -16,8 +18,8 @@ String replaceBetween(String str, String startChar, String endChar, String repla
   return str.replaceAll(RegExp('$startCharRegExp.*?$endCharRegExp'), replaceWith);
 }
 
-String removeNewLine(String str, {String? replaceTo = ''}) {
-  return str.replaceAll(RegExp(r'(\r\n|\n|\r)', multiLine: true), replaceTo ?? '').trim();
+String removeNewLine(String str, {String replaceTo = ''}) {
+  return str.replaceAll(RegExp(r'(\r\n|\n|\r)', multiLine: true), replaceTo).trim();
 }
 
 String capitalizeFirst(String str) {
@@ -44,6 +46,21 @@ String capitalizeEverySentence(String str, {String? splitChar}) {
   }
 
   return resultStr;
+}
+
+String capitalizeEachWords(String str, {bool natural = false}) {
+  final List<String> splitStr = str.trim().toLowerCase().split(' ');
+
+  for (int i = 0, iLen = splitStr.length; i < iLen; i += 1) {
+    if (!natural ||
+        !contains(
+            splitStr[i], ['in', 'on', 'the', 'at', 'and', 'or', 'of', 'for', 'to', 'that', 'a', 'by', 'it', 'is', 'as', 'are', 'were', 'was', 'nor', 'an'],
+            exact: true)) {
+      splitStr[i] = capitalizeFirst(splitStr[i]);
+    }
+  }
+
+  return capitalizeFirst(splitStr.join(' '));
 }
 
 String truncate(String str, int length, {String? ellipsis}) {
