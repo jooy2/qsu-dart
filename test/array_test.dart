@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('Array', () {
     test('arrShuffle', () {
-      expect(arrShuffle([1, 2, 3, 4, 5, 6, 7, 8]), completes);
+      expect(arrShuffle([1, 2, 3, 4, 5, 6, 7, 8]), hasLength(8));
       expect(
           arrShuffle([
             [1, 2],
@@ -12,7 +12,7 @@ void main() {
             [5, 6],
             [7, 8]
           ]),
-          completes);
+          hasLength(4));
       expect(
           arrShuffle([
             {'A': 1},
@@ -20,7 +20,7 @@ void main() {
             {'C': 3},
             {'D': 4}
           ]),
-          completes);
+          hasLength(4));
     });
   });
 }
