@@ -24,6 +24,28 @@ String capitalizeFirst(String str) {
   return '${str[0].toUpperCase()}${str.substring(1)}';
 }
 
+String capitalizeEverySentence(String str, {String? splitChar}) {
+  final String splitter = splitChar ?? '.';
+  final List<String> splitStr = str.split(splitter);
+  String resultStr = '';
+  List<String> sentenceChars = <String>[];
+
+  for (int i = 0, iLen = splitStr.length; i < iLen; i += 1) {
+    sentenceChars = [...splitStr[i].split('')];
+
+    for (int j = 0, jLen = sentenceChars.length; j < jLen; j += 1) {
+      if (RegExp(r'[a-zA-Z]').hasMatch(splitStr[i][j])) {
+        sentenceChars[j] = splitStr[i][j].toUpperCase();
+        break;
+      }
+    }
+
+    resultStr += '${sentenceChars.join('')}${i < iLen - 1 ? splitter : ''}';
+  }
+
+  return resultStr;
+}
+
 String truncate(String str, int length, {String? ellipsis}) {
   if (str.length > length) {
     return str.substring(0, length) + (ellipsis ?? '');

@@ -37,6 +37,14 @@ st'''), 'test');
       expect(capitalizeFirst('tEST'), 'TEST');
     });
 
+    test('capitalizeEverySentence', () {
+      expect(capitalizeEverySentence('hello. world'), 'Hello. World');
+      expect(capitalizeEverySentence('hello. 1world'), 'Hello. 1World');
+      expect(capitalizeEverySentence('HeLLO,world'), 'HeLLO,world');
+      expect(capitalizeEverySentence('H. e. l. l. o.'), 'H. E. L. L. O.');
+      expect(capitalizeEverySentence('hello!world!', splitChar: '!'), 'Hello!World!');
+    });
+
     test('truncate', () {
       expect(truncate('test', 2), 'te');
       expect(truncate('test', 1, ellipsis: '...'), 't...');
