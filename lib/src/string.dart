@@ -16,6 +16,10 @@ String replaceBetween(String str, String startChar, String endChar, String repla
   return str.replaceAll(RegExp('$startCharRegExp.*?$endCharRegExp'), replaceWith);
 }
 
+String removeNewLine(String str, {String? replaceTo = ''}) {
+  return str.replaceAll(RegExp(r'(\r\n|\n|\r)', multiLine: true), replaceTo ?? '').trim();
+}
+
 String capitalizeFirst(String str) {
   return '${str[0].toUpperCase()}${str.substring(1)}';
 }

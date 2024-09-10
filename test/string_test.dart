@@ -20,6 +20,17 @@ void main() {
       expect(replaceBetween('hell1o2~', '1', '2', 'o!'), 'hello!~');
     });
 
+    test('removeNewLine', () {
+      expect(removeNewLine('''te
+
+st'''), 'test');
+      expect(removeNewLine('te\rst'), 'test');
+      expect(removeNewLine('te\nst'), 'test');
+      expect(removeNewLine('te\r\nst'), 'test');
+      expect(removeNewLine('te\r\nst', replaceTo: '|'), 'te|st');
+      expect(removeNewLine('t\ne\r\ns\rt', replaceTo: '-'), 't-e-s-t');
+    });
+
     test('capitalizeFirst', () {
       expect(capitalizeFirst('t'), 'T');
       expect(capitalizeFirst('test'), 'Test');
