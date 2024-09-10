@@ -6,6 +6,7 @@
 - Add `replaceBetween` method
 - Add `removeNewLine` method
 - Add `capitalizeEverySentence` method
+- Add `contains` method
 
 ## 0.0.1 (2024-09-02) - Not for Production
 
