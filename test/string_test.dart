@@ -55,5 +55,12 @@ st'''), 'test');
       expect(truncate('test', 2), 'te');
       expect(truncate('test', 1, ellipsis: '...'), 't...');
     });
+
+    test('strCount', () {
+      expect(strCount('hello', 'l'), 2);
+      expect(strCount('abcdABCD', 'a'), 1);
+      expect(strCount('aaaaaa', 'a'), 6);
+      expect(strCount('hello', 'll'), 1);
+    });
   });
 }

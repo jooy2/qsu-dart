@@ -8,6 +8,7 @@
 - Add `capitalizeEverySentence` method
 - Add `contains` method
 - Add `capitalizeEachWords` method
+- Add `strCount` method
 
 ## 0.0.1 (2024-09-02) - Not for Production
 

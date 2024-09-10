@@ -69,3 +69,15 @@ String truncate(String str, int length, {String? ellipsis}) {
   }
   return str;
 }
+
+int strCount(String str, String search) {
+  int count = 0;
+  int pos = str.indexOf(search);
+
+  while (pos > -1) {
+    count += 1;
+    pos = str.indexOf(search, (pos += search.length));
+  }
+
+  return count;
+}
