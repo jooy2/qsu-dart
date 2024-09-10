@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.0.2 (2024-) - Not for Production
+## 0.0.2 (2024-09-10)
 
 - Add `trim` method
 - Add `replaceBetween` method
