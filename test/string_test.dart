@@ -71,5 +71,10 @@ st'''), 'test');
       expect(strCount('aaaaaa', 'a'), 6);
       expect(strCount('hello', 'll'), 1);
     });
+
+    test('strShuffle', () {
+      expect(strShuffle('hi'), hasLength(2));
+      expect(strShuffle('abc def ghi'), hasLength(11));
+    });
   });
 }

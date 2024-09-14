@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:qsu/qsu.dart';
 
 String trim(String str) {
@@ -84,4 +86,18 @@ int strCount(String str, String search) {
   }
 
   return count;
+}
+
+String strShuffle(String str) {
+  List<int> codePoints = str.runes.toList();
+  Random random = Random();
+
+  for (int i = codePoints.length - 1; i > 0; i--) {
+    int j = random.nextInt(i + 1);
+    int temp = codePoints[i];
+    codePoints[i] = codePoints[j];
+    codePoints[j] = temp;
+  }
+
+  return String.fromCharCodes(codePoints);
 }

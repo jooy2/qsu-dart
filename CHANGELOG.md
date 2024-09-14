@@ -12,6 +12,7 @@
 - Add `sleep` method
 - Add `arrShuffle` method
 - Add `removeSpecialChar` method
+- Add `strShuffle` method
 
 ## 0.0.1 (2024-09-02) - Not for Production
 
