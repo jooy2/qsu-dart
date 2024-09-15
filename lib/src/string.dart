@@ -89,8 +89,8 @@ int strCount(String str, String search) {
 }
 
 String strShuffle(String str) {
-  List<int> codePoints = str.runes.toList();
-  Random random = Random();
+  final List<int> codePoints = str.runes.toList();
+  final Random random = Random();
 
   for (int i = codePoints.length - 1; i > 0; i--) {
     int j = random.nextInt(i + 1);
@@ -100,4 +100,26 @@ String strShuffle(String str) {
   }
 
   return String.fromCharCodes(codePoints);
+}
+
+String strRandom(int length, {String? additionalCharacters}) {
+  if (length <= 0) {
+    throw ArgumentError('Length must be positive');
+  }
+
+  final String availCharacters = 'abcdefghijklmnopqrstuvwxyz0123456789${additionalCharacters ?? ''}';
+  final Random random = Random();
+  final StringBuffer result = StringBuffer();
+
+  for (int i = 0; i < length; i++) {
+    String newChar = availCharacters[random.nextInt(availCharacters.length)];
+
+    if (random.nextBool()) {
+      newChar = newChar.toUpperCase();
+    }
+    
+    result.write(newChar);
+  }
+
+  return result.toString();
 }

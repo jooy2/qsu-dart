@@ -76,5 +76,11 @@ st'''), 'test');
       expect(strShuffle('hi'), hasLength(2));
       expect(strShuffle('abc def ghi'), hasLength(11));
     });
+
+    test('strRandom', () {
+      expect(strRandom(4), hasLength(4));
+      expect(strRandom(6), hasLength(6));
+      expect(strRandom(10, additionalCharacters: '[]{}()'), hasLength(10));
+    });
   });
 }

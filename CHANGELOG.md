@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.0.3 (2024--)
+
+- Add `strShuffle` method
+- Add `strRandom` method
+
 ## 0.0.2 (2024-09-10)
 
 - Add `trim` method
@@ -12,7 +17,6 @@
 - Add `sleep` method
 - Add `arrShuffle` method
 - Add `removeSpecialChar` method
-- Add `strShuffle` method
 
 ## 0.0.1 (2024-09-02) - Not for Production
 
