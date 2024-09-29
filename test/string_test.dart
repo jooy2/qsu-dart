@@ -65,6 +65,15 @@ st'''), 'test');
       expect(truncate('test', 1, ellipsis: '...'), 't...');
     });
 
+    test('truncateExpect', () {
+      expect(truncateExpect('hello. this is test string.', 10, endStringChar: '.'), 'hello. this is test string.');
+      expect(truncateExpect('hello. this is test. bye.', 20, endStringChar: '.'), 'hello. this is test.');
+      expect(truncateExpect('hello.. this is test', 20, endStringChar: '.'), 'hello.. this is test');
+      expect(truncateExpect('hello.. this is test', 21, endStringChar: '.'), 'hello.. this is test');
+      expect(truncateExpect('hello.. this is test', 19, endStringChar: '.'), 'hello.. this is test');
+      expect(truncateExpect('hello-this-is-test-string-bye', 14, endStringChar: '-'), 'hello-this-is-');
+    });
+
     test('strCount', () {
       expect(strCount('hello', 'l'), 2);
       expect(strCount('abcdABCD', 'a'), 1);

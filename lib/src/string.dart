@@ -76,6 +76,26 @@ String truncate(String str, int length, {String? ellipsis}) {
   return str;
 }
 
+String truncateExpect(String str, int expectLength, {String? endStringChar}) {
+  final String endString = endStringChar ?? '.';
+  final bool isEndStringCharLastSentence = str.substring(str.length - 1) == endStringChar;
+  final List<String> splitStr = str.split(endString);
+  final int splitStrLength = splitStr.length;
+  String convStr = '';
+  int currentLength = 0;
+
+  for (int i = 0; i < splitStrLength; i += 1) {
+    if (currentLength < expectLength) {
+      convStr += '${splitStr[i]}${i != splitStrLength - 1 || isEndStringCharLastSentence ? endStringChar : ''}';
+      currentLength += splitStr[i].length + endString.length;
+    } else {
+      break;
+    }
+  }
+
+  return convStr;
+}
+
 int strCount(String str, String search) {
   int count = 0;
   int pos = str.indexOf(search);
@@ -117,7 +137,7 @@ String strRandom(int length, {String? additionalCharacters}) {
     if (random.nextBool()) {
       newChar = newChar.toUpperCase();
     }
-    
+
     result.write(newChar);
   }
 
