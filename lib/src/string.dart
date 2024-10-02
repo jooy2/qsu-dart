@@ -152,3 +152,13 @@ String strUnique(String? str) {
 
   return LinkedHashSet<String>.from(str.split('')).join('');
 }
+
+List<int> strToAscii(String str) {
+  List<int> arr = [];
+
+  for (int i = 0; i < str.length; i += 1) {
+    arr.add(str.codeUnitAt(i));
+  }
+
+  return arr;
+}

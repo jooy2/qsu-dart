@@ -97,5 +97,10 @@ st'''), 'test');
       expect(strUnique('ababcdcd'), 'abcd');
       expect(strUnique('abc--11111'), 'abc-1');
     });
+
+    test('strToAscii', () {
+      expect(strToAscii('hello-world.'), [104, 101, 108, 108, 111, 45, 119, 111, 114, 108, 100, 46]);
+      expect(strToAscii('1 2 3 4 5'), [49, 32, 50, 32, 51, 32, 52, 32, 53]);
+    });
   });
 }
