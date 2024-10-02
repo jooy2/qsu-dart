@@ -82,5 +82,11 @@ void main() {
       expect(average([1, 5, 15, 50]), 17.75);
       expect(average([5, -5]), 0);
     });
+
+    test('arrMove', () {
+      expect(arrMove([1, 3, 5, 7, 9], 0, 3), [3, 5, 7, 1, 9]);
+      expect(arrMove([5, 10, 15], 1, 2), [5, 15, 10]);
+      expect(arrMove([5, 10, 15], 1, 1), [5, 10, 15]);
+    });
   });
 }

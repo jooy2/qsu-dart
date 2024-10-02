@@ -3,6 +3,7 @@
 ## 0.0.4 (2024--)
 
 - Add `average` method
+- Add `arrMove` method
 
 ## 0.0.3 (2024-10-02)
 

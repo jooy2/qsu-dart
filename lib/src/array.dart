@@ -58,3 +58,16 @@ List<dynamic> arrUnique(List<dynamic> array) {
 double average(List<double> array) {
   return array.reduce((p, c) => p + c) / array.length;
 }
+
+List<dynamic> arrMove(List<dynamic> array, int from, int to) {
+  final int arrayLength = array.length;
+
+  if (arrayLength <= from || arrayLength <= to) {
+    throw Exception('Invalid move params');
+  }
+
+  final dynamic item = array.removeAt(from);
+  array.insert(to, item);
+
+  return array;
+}
