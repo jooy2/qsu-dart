@@ -162,3 +162,25 @@ List<int> strToAscii(String str) {
 
   return arr;
 }
+
+String urlJoin(List<String?> args) {
+  if (args.isEmpty) {
+    return '';
+  }
+
+  String urlResult = '';
+  int joinCount = 0;
+
+  for (var arg in args) {
+    if (arg != null) {
+      if (joinCount == 0 || arg.startsWith('/') || arg.startsWith('?') || arg.startsWith('&')) {
+        urlResult += arg;
+      } else {
+        urlResult += '/$arg';
+      }
+      joinCount += 1;
+    }
+  }
+
+  return urlResult.replaceAll(RegExp(r'/$'), '');
+}

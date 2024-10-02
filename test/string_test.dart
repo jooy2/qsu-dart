@@ -102,5 +102,22 @@ st'''), 'test');
       expect(strToAscii('hello-world.'), [104, 101, 108, 108, 111, 45, 119, 111, 114, 108, 100, 46]);
       expect(strToAscii('1 2 3 4 5'), [49, 32, 50, 32, 51, 32, 52, 32, 53]);
     });
+
+    test('urlJoin', () {
+      expect(strToAscii('hello-world.'), [104, 101, 108, 108, 111, 45, 119, 111, 114, 108, 100, 46]);
+      expect(strToAscii('1 2 3 4 5'), [49, 32, 50, 32, 51, 32, 52, 32, 53]);
+    });
+
+    test('urlJoin', () {
+      expect(urlJoin(['https://example.com']), 'https://example.com');
+      expect(urlJoin(['https://example.com', null, 'world/']), 'https://example.com/world');
+      expect(urlJoin([null, 'https://example.com', 'world/']), 'https://example.com/world');
+      expect(urlJoin(['https://example.com', 'hello', '#fragment']), 'https://example.com/hello/#fragment');
+      expect(urlJoin(['https://example.com', 'hello', 'world']), 'https://example.com/hello/world');
+      expect(urlJoin(['https://example.com', '/hello', '/world', 'bye']), 'https://example.com/hello/world/bye');
+      expect(urlJoin(['https://example.com', '/hello', '/world', '?text=bye&a=b']), 'https://example.com/hello/world?text=bye&a=b');
+      expect(urlJoin(['example.com', '/hello', '/world', 'bye']), 'example.com/hello/world/bye');
+      expect(urlJoin(['hello', '/world', 'bye']), 'hello/world/bye');
+    });
   });
 }

@@ -7,6 +7,7 @@
 - Add `truncateExpect` method
 - Add `strUnique` method
 - Add `strToAscii` method
+- Add `urlJoin` method
 
 ## 0.0.2 (2024-09-10)
 
