@@ -22,5 +22,15 @@ void main() {
           ]),
           hasLength(4));
     });
+
+    test('arrWithDefault', () {
+      expect(arrWithDefault('test', 0), []);
+      expect(arrWithDefault(123, 2), [123, 123]);
+      expect(arrWithDefault('test', 5), ['test', 'test', 'test', 'test', 'test']);
+      expect(arrWithDefault([null], 2), [
+        [null],
+        [null]
+      ]);
+    });
   });
 }

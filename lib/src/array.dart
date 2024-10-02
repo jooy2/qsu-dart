@@ -16,3 +16,11 @@ List<T> arrShuffle<T>(List<T> array) {
 
   return newArray;
 }
+
+List<dynamic> arrWithDefault(dynamic defaultValue, int length) {
+  if (length < 1) {
+    return [];
+  }
+
+  return List.filled(length, defaultValue);
+}
