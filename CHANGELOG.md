@@ -5,6 +5,7 @@
 - Add `average` method
 - Add `arrMove` method
 - Add `arrTo1dArray` method
+- Add `arrRepeat` method
 
 ## 0.0.3 (2024-10-02)
 

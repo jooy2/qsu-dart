@@ -92,3 +92,21 @@ List<dynamic> arrTo1dArray(List<dynamic> array) {
 
   return convert1dArray(array);
 }
+
+List<dynamic> arrRepeat(dynamic array, int count) {
+  if (array.isEmpty || count < 1) {
+    return [];
+  }
+
+  List<dynamic> result = [];
+
+  for (int i = 0; i < count; i++) {
+    if (array is Map) {
+      result.add(array);
+    } else {
+      result.addAll(array);
+    }
+  }
+
+  return result;
+}
