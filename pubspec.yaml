@@ -1,7 +1,7 @@
 name: qsu
 description: >-
   QSU is a lightweight and simple module with a variety of built-in utility functions that you can utilize in your Dart projects.
-version: 0.0.3
+version: 0.0.4
 repository: https://github.com/jooy2/qsu-dart
 homepage: https://qsu.cdget.com
 

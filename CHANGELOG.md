@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.0.4 (2024--)
+## 0.0.4 (2024-10-02)
 
 - Add `average` method
 - Add `arrMove` method
