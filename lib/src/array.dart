@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'dart:math';
+
+import 'package:qsu/src/verify.dart';
 
 List<T> arrShuffle<T>(List<T> array) {
   if (array.length == 1) {
@@ -31,4 +34,23 @@ List<int> arrWithNumber(int start, int end) {
   }
 
   return List<int>.generate(end - start + 1, (index) => start + index);
+}
+
+List<dynamic> arrUnique(List<dynamic> array) {
+  if (is2dArray(array)) {
+    final Set<String> jsonSet = <String>{};
+    final List<dynamic> result = <dynamic>[];
+
+    for (dynamic item in array) {
+      final String jsonString = jsonEncode(item);
+
+      if (jsonSet.add(jsonString)) {
+        result.add(jsonDecode(jsonString));
+      }
+    }
+
+    return result;
+  } else {
+    return array.toSet().toList();
+  }
 }

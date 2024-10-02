@@ -12,6 +12,7 @@
 - Add `arrWithNumber` method
 - Add `funcTimes` method
 - Add `is2dArray` method
+- Add `arrUnique` method
 
 ## 0.0.2 (2024-09-10)
 
