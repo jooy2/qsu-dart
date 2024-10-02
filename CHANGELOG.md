@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.0.3 (2024--)
+## 0.0.3 (2024-10-02)
 
 - Add `strShuffle` method
 - Add `strRandom` method
