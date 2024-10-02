@@ -91,5 +91,11 @@ st'''), 'test');
       expect(strRandom(6), hasLength(6));
       expect(strRandom(10, additionalCharacters: '[]{}()'), hasLength(10));
     });
+
+    test('strUnique', () {
+      expect(strUnique('123'), '123');
+      expect(strUnique('ababcdcd'), 'abcd');
+      expect(strUnique('abc--11111'), 'abc-1');
+    });
   });
 }

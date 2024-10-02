@@ -5,6 +5,7 @@
 - Add `strShuffle` method
 - Add `strRandom` method
 - Add `truncateExpect` method
+- Add `strUnique` method
 
 ## 0.0.2 (2024-09-10)
 

@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:math';
 
 import 'package:qsu/qsu.dart';
@@ -142,4 +143,12 @@ String strRandom(int length, {String? additionalCharacters}) {
   }
 
   return result.toString();
+}
+
+String strUnique(String? str) {
+  if (str == null || str.isEmpty) {
+    return '';
+  }
+
+  return LinkedHashSet<String>.from(str.split('')).join('');
 }
