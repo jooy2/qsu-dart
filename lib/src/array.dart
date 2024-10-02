@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:qsu/src/verify.dart';
 
+/// Shuffle the order of the given array and return.
 List<T> arrShuffle<T>(List<T> array) {
   if (array.length == 1) {
     return array;
@@ -20,6 +21,7 @@ List<T> arrShuffle<T>(List<T> array) {
   return newArray;
 }
 
+/// Initialize an array with a default value of a specific length.
 List<dynamic> arrWithDefault(dynamic defaultValue, int length) {
   if (length < 1) {
     return [];
@@ -28,6 +30,7 @@ List<dynamic> arrWithDefault(dynamic defaultValue, int length) {
   return List.filled(length, defaultValue);
 }
 
+/// Creates and returns an Array in the order of start...end values.
 List<int> arrWithNumber(int start, int end) {
   if (start > end) {
     throw ArgumentError('`end` is greater than `start`.');
@@ -36,6 +39,7 @@ List<int> arrWithNumber(int start, int end) {
   return List<int>.generate(end - start + 1, (index) => start + index);
 }
 
+/// Remove duplicate values from array and two-dimensional array data. In the case of 2d arrays, json type data duplication is not removed.
 List<dynamic> arrUnique(List<dynamic> array) {
   if (is2dArray(array)) {
     final Set<String> jsonSet = <String>{};
@@ -55,10 +59,12 @@ List<dynamic> arrUnique(List<dynamic> array) {
   }
 }
 
+/// Returns the average of all numeric values in an array.
 double average(List<double> array) {
   return array.reduce((p, c) => p + c) / array.length;
 }
 
+/// Moves the position of a specific element in an array to the specified position. (Position starts from 0.)
 List<dynamic> arrMove(List<dynamic> array, int from, int to) {
   final int arrayLength = array.length;
 
@@ -72,6 +78,7 @@ List<dynamic> arrMove(List<dynamic> array, int from, int to) {
   return array;
 }
 
+/// Merges all elements of a multidimensional array into a one-dimensional array.
 List<dynamic> arrTo1dArray(List<dynamic> array) {
   List<dynamic> convert1dArray(List<dynamic> arr) {
     final List<dynamic> tempArr = [];
@@ -93,6 +100,7 @@ List<dynamic> arrTo1dArray(List<dynamic> array) {
   return convert1dArray(array);
 }
 
+/// Repeats the data of an `Array` or `Map` a specific number of times and returns it as a 1d array.
 List<dynamic> arrRepeat(dynamic array, int count) {
   if (array.isEmpty || count < 1) {
     return [];

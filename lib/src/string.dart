@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:qsu/qsu.dart';
 
+/// Removes all whitespace before and after a string. Unlike JavaScript's `trim` function, it converts two or more spaces between sentences into a single space.
 String trim(String str) {
   if (str.isEmpty) {
     return '';
@@ -13,10 +14,13 @@ String trim(String str) {
   return result.replaceAll(RegExp(r'\s{2,}'), ' ');
 }
 
+/// Returns after removing all special characters, including spaces. If you want to allow any special characters as exceptions, list them in the second argument value without delimiters. For example, if you want to allow spaces and the symbols `&` and `*`, the second argument value would be ' &\*'.
 String removeSpecialChar(String str, {String? exceptionCharacters}) {
   return str.replaceAll(RegExp('[^a-zA-Z가-힣ㄱ-ㅎㅏ-ㅣ0-9\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f${exceptionCharacters ?? ''}]'), '');
 }
 
+/// Replaces text within a range starting and ending with a specific character in a given string with another string. For example, given the string `abc<DEF>ghi`, to change `<DEF>` to `def`, use `replaceBetween('abc<DEF>ghi', '<', '>', 'def')`. The result would be `abcdefghi`.
+/// Deletes strings in the range if `replaceWith` is not specified.
 String replaceBetween(String str, String startChar, String endChar, String replaceWith) {
   final RegExp specialCharacters = RegExp(r'[.*+?^${}()|[\]\\]');
   final String startCharRegExp = specialCharacters.hasMatch(startChar) ? '\\$startChar' : startChar;
@@ -25,14 +29,17 @@ String replaceBetween(String str, String startChar, String endChar, String repla
   return str.replaceAll(RegExp('$startCharRegExp.*?$endCharRegExp'), replaceWith);
 }
 
+/// Removes `\n`, `\r` characters or replaces them with specified characters.
 String removeNewLine(String str, {String replaceTo = ''}) {
   return str.replaceAll(RegExp(r'(\r\n|\n|\r)', multiLine: true), replaceTo).trim();
 }
 
+/// Converts the first letter of the entire string to uppercase and returns.
 String capitalizeFirst(String str) {
   return '${str[0].toUpperCase()}${str.substring(1)}';
 }
 
+/// Capitalize the first letter of every sentence. Typically, the `.` characters to separate sentences, but this can be customized via the value of the `splitChar` argument.
 String capitalizeEverySentence(String str, {String? splitChar}) {
   final String splitter = splitChar ?? '.';
   final List<String> splitStr = str.split(splitter);
@@ -55,6 +62,7 @@ String capitalizeEverySentence(String str, {String? splitChar}) {
   return resultStr;
 }
 
+/// Converts every word with spaces to uppercase. If the naturally argument is true, only some special cases (such as prepositions) are kept lowercase.
 String capitalizeEachWords(String str, {bool natural = false}) {
   final List<String> splitStr = str.trim().toLowerCase().split(' ');
 
@@ -70,6 +78,7 @@ String capitalizeEachWords(String str, {bool natural = false}) {
   return capitalizeFirst(splitStr.join(' '));
 }
 
+/// Truncates a long string to a specified length, optionally appending an ellipsis after the string.
 String truncate(String str, int length, {String? ellipsis}) {
   if (str.length > length) {
     return str.substring(0, length) + (ellipsis ?? '');
@@ -77,6 +86,7 @@ String truncate(String str, int length, {String? ellipsis}) {
   return str;
 }
 
+/// The string ignores truncation until the ending character (`endStringChar`). If the expected length is reached, return the truncated string until after the ending character.
 String truncateExpect(String str, int expectLength, {String? endStringChar}) {
   final String endString = endStringChar ?? '.';
   final bool isEndStringCharLastSentence = str.substring(str.length - 1) == endStringChar;
@@ -97,6 +107,7 @@ String truncateExpect(String str, int expectLength, {String? endStringChar}) {
   return convStr;
 }
 
+/// Returns the number of times the second String argument is contained in the first String argument.
 int strCount(String str, String search) {
   int count = 0;
   int pos = str.indexOf(search);
@@ -109,6 +120,7 @@ int strCount(String str, String search) {
   return count;
 }
 
+/// Randomly shuffles the received string and returns it.
 String strShuffle(String str) {
   final List<int> codePoints = str.runes.toList();
   final Random random = Random();
@@ -123,6 +135,7 @@ String strShuffle(String str) {
   return String.fromCharCodes(codePoints);
 }
 
+/// Returns a random String containing numbers or uppercase and lowercase letters of the given length. The default return length is 12.
 String strRandom(int length, {String? additionalCharacters}) {
   if (length <= 0) {
     throw ArgumentError('Length must be positive');
@@ -145,6 +158,7 @@ String strRandom(int length, {String? additionalCharacters}) {
   return result.toString();
 }
 
+/// Remove duplicate characters from a given string and output only one.
 String strUnique(String? str) {
   if (str == null || str.isEmpty) {
     return '';
@@ -153,6 +167,7 @@ String strUnique(String? str) {
   return LinkedHashSet<String>.from(str.split('')).join('');
 }
 
+/// Converts the given string to ascii code and returns it as an array.
 List<int> strToAscii(String str) {
   List<int> arr = [];
 
@@ -163,6 +178,7 @@ List<int> strToAscii(String str) {
   return arr;
 }
 
+/// Merges the given list argument (the beginning of the URL), joining it so that the slash (`/`) symbol is correctly included.
 String urlJoin(List<String?> args) {
   if (args.isEmpty) {
     return '';

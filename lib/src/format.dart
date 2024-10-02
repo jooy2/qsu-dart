@@ -1,3 +1,4 @@
+/// Return number format including comma symbol.
 String numberFormat(dynamic number) {
   final List<String> parts = number.toString().split('.');
   final String decimalPart = (parts.length > 1 && parts[1] != '0') ? '.${parts[1]}' : '';

@@ -1,3 +1,4 @@
+/// Returns `true` if the first string argument contains the second argument "string" or "one or more of the strings listed in the array". If the exact value is `true`, it returns true only for an exact match.
 bool contains(dynamic str, dynamic search, {bool exact = false}) {
   if (search.runtimeType == String) {
     return str.length < 1 ? false : str.indexOf(search) != -1;
@@ -16,6 +17,7 @@ bool contains(dynamic str, dynamic search, {bool exact = false}) {
   return false;
 }
 
+/// Returns `true` if the given array is a two-dimensional array.
 bool is2dArray(List<dynamic> array) {
   return array.any((element) => element is List);
 }
