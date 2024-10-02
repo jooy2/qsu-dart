@@ -54,3 +54,7 @@ List<dynamic> arrUnique(List<dynamic> array) {
     return array.toSet().toList();
   }
 }
+
+double average(List<double> array) {
+  return array.reduce((p, c) => p + c) / array.length;
+}

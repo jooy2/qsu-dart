@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.4 (2024--)
+
+- Add `average` method
+
 ## 0.0.3 (2024-10-02)
 
 - Add `strShuffle` method

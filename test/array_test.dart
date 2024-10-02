@@ -76,5 +76,11 @@ void main() {
             [2, 4]
           ]);
     });
+
+    test('average', () {
+      expect(average([1, 3, 5, 7, 9]), 5);
+      expect(average([1, 5, 15, 50]), 17.75);
+      expect(average([5, -5]), 0);
+    });
   });
 }
