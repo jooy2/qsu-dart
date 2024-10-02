@@ -32,5 +32,11 @@ void main() {
         [null]
       ]);
     });
+
+    test('arrWithNumber', () {
+      expect(arrWithNumber(1, 2), [1, 2]);
+      expect(arrWithNumber(0, 5), [0, 1, 2, 3, 4, 5]);
+      expect(arrWithNumber(1, 1), [1]);
+    });
   });
 }

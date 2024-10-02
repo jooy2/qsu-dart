@@ -24,3 +24,11 @@ List<dynamic> arrWithDefault(dynamic defaultValue, int length) {
 
   return List.filled(length, defaultValue);
 }
+
+List<int> arrWithNumber(int start, int end) {
+  if (start > end) {
+    throw ArgumentError('`end` is greater than `start`.');
+  }
+
+  return List<int>.generate(end - start + 1, (index) => start + index);
+}

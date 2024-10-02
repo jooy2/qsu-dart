@@ -9,6 +9,7 @@
 - Add `strToAscii` method
 - Add `urlJoin` method
 - Add `arrWithDefault` method
+- Add `arrWithNumber` method
 
 ## 0.0.2 (2024-09-10)
 
