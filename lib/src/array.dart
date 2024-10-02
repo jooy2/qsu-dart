@@ -71,3 +71,24 @@ List<dynamic> arrMove(List<dynamic> array, int from, int to) {
 
   return array;
 }
+
+List<dynamic> arrTo1dArray(List<dynamic> array) {
+  List<dynamic> convert1dArray(List<dynamic> arr) {
+    final List<dynamic> tempArr = [];
+    final int arrayLength = arr.length;
+
+    for (int i = 0; i < arrayLength; i++) {
+      if (arr[i] is! List) {
+        tempArr.add(arr[i]);
+      } else if (is2dArray(arr[i])) {
+        tempArr.addAll(convert1dArray(arr[i]));
+      } else {
+        tempArr.addAll(arr[i]);
+      }
+    }
+
+    return tempArr;
+  }
+
+  return convert1dArray(array);
+}
