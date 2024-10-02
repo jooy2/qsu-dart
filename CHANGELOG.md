@@ -11,6 +11,7 @@
 - Add `arrWithDefault` method
 - Add `arrWithNumber` method
 - Add `funcTimes` method
+- Add `is2dArray` method
 
 ## 0.0.2 (2024-09-10)
 

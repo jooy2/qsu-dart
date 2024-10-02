@@ -15,3 +15,7 @@ bool contains(dynamic str, dynamic search, {bool exact = false}) {
 
   return false;
 }
+
+bool is2dArray(List<dynamic> array) {
+  return array.any((element) => element is List);
+}

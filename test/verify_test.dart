@@ -11,5 +11,22 @@ void main() {
       expect(contains('ABC', ['AB', 'C'], exact: true), false);
       expect(contains('AB', ['AB', 'C', 'D'], exact: true), true);
     });
+
+    test('is2dArray', () {
+      expect(is2dArray([]), false);
+      expect(is2dArray([[], []]), true);
+      expect(
+          is2dArray([
+            {'a': 1},
+            {'b': 2}
+          ]),
+          false);
+      expect(
+          is2dArray([
+            [1],
+            [2]
+          ]),
+          true);
+    });
   });
 }
