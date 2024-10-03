@@ -16,22 +16,31 @@ String trim(String str) {
 
 /// Returns after removing all special characters, including spaces. If you want to allow any special characters as exceptions, list them in the second argument value without delimiters. For example, if you want to allow spaces and the symbols `&` and `*`, the second argument value would be ' &\*'.
 String removeSpecialChar(String str, {String? exceptionCharacters}) {
-  return str.replaceAll(RegExp('[^a-zA-Z가-힣ㄱ-ㅎㅏ-ㅣ0-9\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f${exceptionCharacters ?? ''}]'), '');
+  return str.replaceAll(
+      RegExp(
+          '[^a-zA-Z가-힣ㄱ-ㅎㅏ-ㅣ0-9\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f${exceptionCharacters ?? ''}]'),
+      '');
 }
 
 /// Replaces text within a range starting and ending with a specific character in a given string with another string. For example, given the string `abc<DEF>ghi`, to change `<DEF>` to `def`, use `replaceBetween('abc<DEF>ghi', '<', '>', 'def')`. The result would be `abcdefghi`.
 /// Deletes strings in the range if `replaceWith` is not specified.
-String replaceBetween(String str, String startChar, String endChar, String replaceWith) {
+String replaceBetween(
+    String str, String startChar, String endChar, String replaceWith) {
   final RegExp specialCharacters = RegExp(r'[.*+?^${}()|[\]\\]');
-  final String startCharRegExp = specialCharacters.hasMatch(startChar) ? '\\$startChar' : startChar;
-  final String endCharRegExp = specialCharacters.hasMatch(endChar) ? '\\$endChar' : endChar;
+  final String startCharRegExp =
+      specialCharacters.hasMatch(startChar) ? '\\$startChar' : startChar;
+  final String endCharRegExp =
+      specialCharacters.hasMatch(endChar) ? '\\$endChar' : endChar;
 
-  return str.replaceAll(RegExp('$startCharRegExp.*?$endCharRegExp'), replaceWith);
+  return str.replaceAll(
+      RegExp('$startCharRegExp.*?$endCharRegExp'), replaceWith);
 }
 
 /// Removes `\n`, `\r` characters or replaces them with specified characters.
 String removeNewLine(String str, {String replaceTo = ''}) {
-  return str.replaceAll(RegExp(r'(\r\n|\n|\r)', multiLine: true), replaceTo).trim();
+  return str
+      .replaceAll(RegExp(r'(\r\n|\n|\r)', multiLine: true), replaceTo)
+      .trim();
 }
 
 /// Converts the first letter of the entire string to uppercase and returns.
@@ -69,7 +78,29 @@ String capitalizeEachWords(String str, {bool natural = false}) {
   for (int i = 0, iLen = splitStr.length; i < iLen; i += 1) {
     if (!natural ||
         !contains(
-            splitStr[i], ['in', 'on', 'the', 'at', 'and', 'or', 'of', 'for', 'to', 'that', 'a', 'by', 'it', 'is', 'as', 'are', 'were', 'was', 'nor', 'an'],
+            splitStr[i],
+            [
+              'in',
+              'on',
+              'the',
+              'at',
+              'and',
+              'or',
+              'of',
+              'for',
+              'to',
+              'that',
+              'a',
+              'by',
+              'it',
+              'is',
+              'as',
+              'are',
+              'were',
+              'was',
+              'nor',
+              'an'
+            ],
             exact: true)) {
       splitStr[i] = capitalizeFirst(splitStr[i]);
     }
@@ -89,7 +120,8 @@ String truncate(String str, int length, {String? ellipsis}) {
 /// The string ignores truncation until the ending character (`endStringChar`). If the expected length is reached, return the truncated string until after the ending character.
 String truncateExpect(String str, int expectLength, {String? endStringChar}) {
   final String endString = endStringChar ?? '.';
-  final bool isEndStringCharLastSentence = str.substring(str.length - 1) == endStringChar;
+  final bool isEndStringCharLastSentence =
+      str.substring(str.length - 1) == endStringChar;
   final List<String> splitStr = str.split(endString);
   final int splitStrLength = splitStr.length;
   String convStr = '';
@@ -97,7 +129,8 @@ String truncateExpect(String str, int expectLength, {String? endStringChar}) {
 
   for (int i = 0; i < splitStrLength; i += 1) {
     if (currentLength < expectLength) {
-      convStr += '${splitStr[i]}${i != splitStrLength - 1 || isEndStringCharLastSentence ? endStringChar : ''}';
+      convStr +=
+          '${splitStr[i]}${i != splitStrLength - 1 || isEndStringCharLastSentence ? endStringChar : ''}';
       currentLength += splitStr[i].length + endString.length;
     } else {
       break;
@@ -141,7 +174,8 @@ String strRandom(int length, {String? additionalCharacters}) {
     throw ArgumentError('Length must be positive');
   }
 
-  final String availCharacters = 'abcdefghijklmnopqrstuvwxyz0123456789${additionalCharacters ?? ''}';
+  final String availCharacters =
+      'abcdefghijklmnopqrstuvwxyz0123456789${additionalCharacters ?? ''}';
   final Random random = Random();
   final StringBuffer result = StringBuffer();
 
@@ -189,7 +223,10 @@ String urlJoin(List<String?> args) {
 
   for (var arg in args) {
     if (arg != null) {
-      if (joinCount == 0 || arg.startsWith('/') || arg.startsWith('?') || arg.startsWith('&')) {
+      if (joinCount == 0 ||
+          arg.startsWith('/') ||
+          arg.startsWith('?') ||
+          arg.startsWith('&')) {
         urlResult += arg;
       } else {
         urlResult += '/$arg';
