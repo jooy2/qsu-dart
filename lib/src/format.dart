@@ -12,6 +12,7 @@ String numberFormat(dynamic number) {
   return formattedIntegerPart + decimalPart;
 }
 
+/// Converts the file size in bytes to human-readable and returns it. The return value is a String and includes the file units (Bytes, MB, GB...). If the second optional argument value is included, you can display as many decimal places as you like.
 String fileSize(int bytes, {int? decimals}) {
   if (bytes <= 0) {
     return '0 Bytes';
@@ -40,4 +41,15 @@ String fileSize(int bytes, {int? decimals}) {
   ];
 
   return '$sizeStr ${units[byteCalc]}';
+}
+
+/// Returns only the extensions in the file path. If unknown, returns 'Unknown'.
+String fileExt(String filePath) {
+  if (!filePath.contains('.')) {
+    return 'Unknown';
+  }
+
+  final List<String> pSpl = filePath.trim().toLowerCase().split('.');
+
+  return pSpl.isNotEmpty ? pSpl.last : 'Unknown';
 }

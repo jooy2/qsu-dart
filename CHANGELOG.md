@@ -3,6 +3,7 @@
 ## 0.0.5 (2024--)
 
 - Add `fileSize` method
+- Add `fileExt` method
 
 ## 0.0.4 (2024-10-02)
 

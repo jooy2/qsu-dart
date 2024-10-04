@@ -21,5 +21,12 @@ void main() {
       expect(fileSize(2000, decimals: 3), '1.953 KB');
       expect(fileSize(250000000), '238.42 MB');
     });
+
+    test('fileExt', () {
+      expect(fileExt('C:\\Users\\test\\Desktop\\text.txt'), 'txt');
+      expect(fileExt('hello.html'), 'html');
+      expect(fileExt('this.is.file.PNG'), 'png');
+      expect(fileExt('no-ext'), 'Unknown');
+    });
   });
 }
