@@ -28,5 +28,14 @@ void main() {
       expect(fileExt('this.is.file.PNG'), 'png');
       expect(fileExt('no-ext'), 'Unknown');
     });
+
+    test('safeParseInt', () {
+      expect(safeParseInt(null), 0);
+      expect(safeParseInt('', fallback: -1), -1);
+      expect(safeParseInt('0001234'), 1234);
+      expect(safeParseInt('1.234.567'), 1);
+      expect(safeParseInt('1234', fallback: 10), 1234);
+      expect(safeParseInt('1234', fallback: 0, radix: 16), 4660);
+    });
   });
 }
