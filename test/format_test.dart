@@ -14,5 +14,12 @@ void main() {
       expect(numberFormat(0), '0');
       expect(numberFormat(-123456), '-123,456');
     });
+
+    test('fileSize', () {
+      expect(fileSize(1), '1 Bytes');
+      expect(fileSize(1000000), '976.56 KB');
+      expect(fileSize(2000, decimals: 3), '1.953 KB');
+      expect(fileSize(250000000), '238.42 MB');
+    });
   });
 }

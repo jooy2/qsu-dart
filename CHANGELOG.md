@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.5 (2024--)
+
+- Add `fileSize` method
+
 ## 0.0.4 (2024-10-02)
 
 - Add `average` method
