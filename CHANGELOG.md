@@ -5,6 +5,7 @@
 - Add `fileSize` method
 - Add `fileExt` method
 - Add `safeParseInt` method
+- Add `isEmail` method
 
 ## 0.0.4 (2024-10-02)
 

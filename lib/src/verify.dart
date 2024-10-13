@@ -21,3 +21,8 @@ bool contains(dynamic str, dynamic search, {bool exact = false}) {
 bool is2dArray(List<dynamic> array) {
   return array.any((element) => element is List);
 }
+
+bool isEmail(String email) {
+  return RegExp(r"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")
+      .hasMatch(email);
+}

@@ -28,5 +28,20 @@ void main() {
           ]),
           true);
     });
+
+    test('isEmail', () {
+      expect(isEmail('1@1.com'), true);
+      expect(isEmail('abc@def.ghi'), true);
+      expect(isEmail('abc@sub.domain.com'), true);
+      expect(isEmail('a.bc@d.ef'), true);
+      expect(isEmail('a-12_34@b-12-34.net'), true);
+      expect(isEmail('@b1234.net'), false);
+      expect(isEmail('a1234@b1234'), false);
+      expect(isEmail('a_1234@b_1234.net'), false);
+      expect(isEmail('abc@@def.com'), false);
+      expect(isEmail('11.com'), false);
+      expect(isEmail('sub.domain.com'), false);
+      expect(isEmail('1@1@a.com'), false);
+    });
   });
 }
