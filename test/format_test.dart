@@ -15,6 +15,12 @@ void main() {
       expect(numberFormat(-123456), '-123,456');
     });
 
+    test('fileName', () {
+      expect(fileName('C:\\Users\\test\\Desktop\\text.txt'), 'text');
+      expect(fileName('/home/user/Desktop/example.txt'), 'example');
+      expect(fileName('C:\\example.txt', true), 'example.txt');
+    });
+
     test('fileSize', () {
       expect(fileSize(1), '1 Bytes');
       expect(fileSize(1000000), '976.56 KB');
