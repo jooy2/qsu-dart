@@ -10,6 +10,7 @@
 - Add `safeJSONParse` method
 - Add `md5Hash` method
 - Add `sha1Hash` method
+- Add `sha256Hash` method
 
 ## 0.0.4 (2024-10-02)
 
