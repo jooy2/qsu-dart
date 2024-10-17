@@ -9,6 +9,7 @@
 - Add `fileName` method
 - Add `safeJSONParse` method
 - Add `md5Hash` method
+- Add `sha1Hash` method
 
 ## 0.0.4 (2024-10-02)
 
