@@ -43,5 +43,17 @@ void main() {
       expect(safeParseInt('1234', fallback: 10), 1234);
       expect(safeParseInt('1234', fallback: 0, radix: 16), 4660);
     });
+
+    test('safeJSONParse', () {
+      expect(safeJSONParse({}), {});
+      expect(safeJSONParse('{}'), {});
+      expect(safeJSONParse(''), {});
+      expect(safeJSONParse(null), {});
+      expect(safeJSONParse('{"a":1,"b":2}'), {'a': 1, 'b': 2});
+      expect(safeJSONParse('{"a":{"aa":1},"b":null}'), {
+        'a': {'aa': 1},
+        'b': null
+      });
+    });
   });
 }

@@ -7,6 +7,7 @@
 - Add `safeParseInt` method
 - Add `isEmail` method
 - Add `fileName` method
+- Add `safeJSONParse` method
 
 ## 0.0.4 (2024-10-02)
 

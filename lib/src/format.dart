@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 import 'package:path/path.dart';
 
@@ -36,7 +37,9 @@ String fileName(String filePath, [bool withExtension = false]) {
   }
 }
 
-/// Converts the file size in bytes to human-readable and returns it. The return value is a String and includes the file units (Bytes, MB, GB...). If the second optional argument value is included, you can display as many decimal places as you like.
+/// Converts the file size in bytes to human-readable and returns it.
+/// The return value is a String and includes the file units (Bytes, MB, GB...).
+/// If the second optional argument value is included, you can display as many decimal places as you like.
 String fileSize(int bytes, {int? decimals}) {
   if (bytes <= 0) {
     return '0 Bytes';
@@ -78,7 +81,9 @@ String fileExt(String filePath) {
   return pSpl.isNotEmpty ? pSpl.last : 'Unknown';
 }
 
-/// Any argument value will be attempted to be parsed as a Number type without returning an error. If parsing fails, it is replaced by the number set in `fallback`. The default value for `fallback` is `0`. You can specify `radix` (default is decimal: `10`) in the third argument.
+/// Any argument value will be attempted to be parsed as a Number type without returning an error.
+/// If parsing fails, it is replaced by the number set in `fallback`.
+/// The default value for `fallback` is `0`. You can specify `radix` (default is decimal: `10`) in the third argument.
 int safeParseInt(dynamic value, {int? fallback, int? radix}) {
   if (value == null) {
     return fallback ?? 0;
@@ -88,5 +93,28 @@ int safeParseInt(dynamic value, {int? fallback, int? radix}) {
     return int.parse(value.toString().split('.').first, radix: radix ?? 10);
   } catch (e) {
     return fallback ?? 0;
+  }
+}
+
+/// Attempts to parse without returning an error, even if the argument value is of the wrong type or in `JSON` format.
+/// If parsing fails, it will be replaced with the object set in `fallback`.
+/// The default value for `fallback` is an empty object.
+dynamic safeJSONParse(dynamic jsonString, [dynamic fallback = const {}]) {
+  if (jsonString == null) {
+    return fallback;
+  }
+
+  if (jsonString is List || jsonString is Map) {
+    try {
+      return jsonDecode(jsonEncode(jsonString));
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  try {
+    return jsonDecode(jsonString);
+  } catch (e) {
+    return fallback;
   }
 }
