@@ -3,6 +3,10 @@ import 'package:test/test.dart';
 
 void main() {
   group('Crypto', () {
+    test('objectId', () {
+      expect(objectId().length, 24);
+    });
+
     test('md5Hash', () {
       expect(md5Hash('test'), '098f6bcd4621d373cade4e832627b4f6');
       expect(md5Hash('qsu-md5'), '94af002364e42b514badb41b870ceb04');

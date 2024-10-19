@@ -14,6 +14,7 @@
 - Add `encodeBase64` method
 - Add `decodeBase64` method
 - Add `strToNumberHash` method
+- Add `objectId` method
 
 ## 0.0.4 (2024-10-02)
 

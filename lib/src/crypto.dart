@@ -1,6 +1,15 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:crypto/crypto.dart';
+
+/// Returns a random string hash of the ObjectId format (primarily utilized by MongoDB).
+String objectId() {
+  return (DateTime.now().millisecondsSinceEpoch ~/ 1000).toRadixString(16) +
+      List.generate(16, (index) {
+        return Random().nextInt(16).toRadixString(16);
+      }).join();
+}
 
 /// Converts String data to md5 hash value and returns it.
 String md5Hash(String str) {
