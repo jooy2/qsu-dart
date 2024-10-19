@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.0.5 (2024--)
+## 1.0.0 (2024-10-19)
 
 - Add `fileSize` method
 - Add `fileExt` method

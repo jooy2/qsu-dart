@@ -16,16 +16,23 @@ void main() {
       expect(removeSpecialChar('Hello, World!'), 'HelloWorld');
       expect(removeSpecialChar('12 34-56,78=90'), '1234567890');
       expect(removeSpecialChar('ABC가나다ㄱㄴㄷㅏㅑㅓ天地人'), 'ABC가나다ㄱㄴㄷㅏㅑㅓ天地人');
-      expect(removeSpecialChar('Hello World!', exceptionCharacters: ' '), 'Hello World');
-      expect(removeSpecialChar('Hello-qsu & World!', exceptionCharacters: '-&!'), 'Hello-qsu&World!');
+      expect(removeSpecialChar('Hello World!', exceptionCharacters: ' '),
+          'Hello World');
+      expect(
+          removeSpecialChar('Hello-qsu & World!', exceptionCharacters: '-&!'),
+          'Hello-qsu&World!');
     });
 
     test('replaceBetween', () {
       expect(replaceBetween('hello[world]', '[', ']', ''), 'hello');
-      expect(replaceBetween("hello'test'world'test2'!!", "'", "'", ''), 'helloworld!!');
-      expect(replaceBetween('hello[w]o[r][[l]][[d]]!!', '[', ']', ''), 'helloo]]!!');
-      expect(replaceBetween('abc[hello]def[world]g[!!!]', '[', ']', ''), 'abcdefg');
-      expect(replaceBetween('abc<<def>>ghi<<jkl>>mn', '<<', '>>', ''), 'abcghimn');
+      expect(replaceBetween("hello'test'world'test2'!!", "'", "'", ''),
+          'helloworld!!');
+      expect(replaceBetween('hello[w]o[r][[l]][[d]]!!', '[', ']', ''),
+          'helloo]]!!');
+      expect(replaceBetween('abc[hello]def[world]g[!!!]', '[', ']', ''),
+          'abcdefg');
+      expect(
+          replaceBetween('abc<<def>>ghi<<jkl>>mn', '<<', '>>', ''), 'abcghimn');
       expect(replaceBetween('hell1o2~', '1', '2', 'o!'), 'hello!~');
     });
 
@@ -51,13 +58,15 @@ st'''), 'test');
       expect(capitalizeEverySentence('hello. 1world'), 'Hello. 1World');
       expect(capitalizeEverySentence('HeLLO,world'), 'HeLLO,world');
       expect(capitalizeEverySentence('H. e. l. l. o.'), 'H. E. L. L. O.');
-      expect(capitalizeEverySentence('hello!world!', splitChar: '!'), 'Hello!World!');
+      expect(capitalizeEverySentence('hello!world!', splitChar: '!'),
+          'Hello!World!');
     });
 
     test('capitalizeEachWords', () {
       expect(capitalizeEachWords('hello, world!'), 'Hello, World!');
       expect(capitalizeEachWords('test'), 'Test');
-      expect(capitalizeEachWords('this is the test sentence.', natural: true), 'This is the Test Sentence.');
+      expect(capitalizeEachWords('this is the test sentence.', natural: true),
+          'This is the Test Sentence.');
     });
 
     test('truncate', () {
@@ -66,12 +75,22 @@ st'''), 'test');
     });
 
     test('truncateExpect', () {
-      expect(truncateExpect('hello. this is test string.', 10, endStringChar: '.'), 'hello. this is test string.');
-      expect(truncateExpect('hello. this is test. bye.', 20, endStringChar: '.'), 'hello. this is test.');
-      expect(truncateExpect('hello.. this is test', 20, endStringChar: '.'), 'hello.. this is test');
-      expect(truncateExpect('hello.. this is test', 21, endStringChar: '.'), 'hello.. this is test');
-      expect(truncateExpect('hello.. this is test', 19, endStringChar: '.'), 'hello.. this is test');
-      expect(truncateExpect('hello-this-is-test-string-bye', 14, endStringChar: '-'), 'hello-this-is-');
+      expect(
+          truncateExpect('hello. this is test string.', 10, endStringChar: '.'),
+          'hello. this is test string.');
+      expect(
+          truncateExpect('hello. this is test. bye.', 20, endStringChar: '.'),
+          'hello. this is test.');
+      expect(truncateExpect('hello.. this is test', 20, endStringChar: '.'),
+          'hello.. this is test');
+      expect(truncateExpect('hello.. this is test', 21, endStringChar: '.'),
+          'hello.. this is test');
+      expect(truncateExpect('hello.. this is test', 19, endStringChar: '.'),
+          'hello.. this is test');
+      expect(
+          truncateExpect('hello-this-is-test-string-bye', 14,
+              endStringChar: '-'),
+          'hello-this-is-');
     });
 
     test('strCount', () {
@@ -99,24 +118,34 @@ st'''), 'test');
     });
 
     test('strToAscii', () {
-      expect(strToAscii('hello-world.'), [104, 101, 108, 108, 111, 45, 119, 111, 114, 108, 100, 46]);
+      expect(strToAscii('hello-world.'),
+          [104, 101, 108, 108, 111, 45, 119, 111, 114, 108, 100, 46]);
       expect(strToAscii('1 2 3 4 5'), [49, 32, 50, 32, 51, 32, 52, 32, 53]);
     });
 
     test('urlJoin', () {
-      expect(strToAscii('hello-world.'), [104, 101, 108, 108, 111, 45, 119, 111, 114, 108, 100, 46]);
+      expect(strToAscii('hello-world.'),
+          [104, 101, 108, 108, 111, 45, 119, 111, 114, 108, 100, 46]);
       expect(strToAscii('1 2 3 4 5'), [49, 32, 50, 32, 51, 32, 52, 32, 53]);
     });
 
     test('urlJoin', () {
       expect(urlJoin(['https://example.com']), 'https://example.com');
-      expect(urlJoin(['https://example.com', null, 'world/']), 'https://example.com/world');
-      expect(urlJoin([null, 'https://example.com', 'world/']), 'https://example.com/world');
-      expect(urlJoin(['https://example.com', 'hello', '#fragment']), 'https://example.com/hello/#fragment');
-      expect(urlJoin(['https://example.com', 'hello', 'world']), 'https://example.com/hello/world');
-      expect(urlJoin(['https://example.com', '/hello', '/world', 'bye']), 'https://example.com/hello/world/bye');
-      expect(urlJoin(['https://example.com', '/hello', '/world', '?text=bye&a=b']), 'https://example.com/hello/world?text=bye&a=b');
-      expect(urlJoin(['example.com', '/hello', '/world', 'bye']), 'example.com/hello/world/bye');
+      expect(urlJoin(['https://example.com', null, 'world/']),
+          'https://example.com/world');
+      expect(urlJoin([null, 'https://example.com', 'world/']),
+          'https://example.com/world');
+      expect(urlJoin(['https://example.com', 'hello', '#fragment']),
+          'https://example.com/hello/#fragment');
+      expect(urlJoin(['https://example.com', 'hello', 'world']),
+          'https://example.com/hello/world');
+      expect(urlJoin(['https://example.com', '/hello', '/world', 'bye']),
+          'https://example.com/hello/world/bye');
+      expect(
+          urlJoin(['https://example.com', '/hello', '/world', '?text=bye&a=b']),
+          'https://example.com/hello/world?text=bye&a=b');
+      expect(urlJoin(['example.com', '/hello', '/world', 'bye']),
+          'example.com/hello/world/bye');
       expect(urlJoin(['hello', '/world', 'bye']), 'hello/world/bye');
     });
   });
