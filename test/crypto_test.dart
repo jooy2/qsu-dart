@@ -29,5 +29,14 @@ void main() {
       expect(decodeBase64('dGhpcyBpcyB0ZXN0'), 'this is test');
       expect(decodeBase64('MTIzNDU2Nzg5MFRlc3Q='), '1234567890Test');
     });
+
+    test('strToNumberHash', () {
+      expect(strToNumberHash(''), 0);
+      expect(strToNumberHash(' '), 32);
+      expect(strToNumberHash('abc'), 96354);
+      expect(strToNumberHash('Hello'), 69609650);
+      expect(strToNumberHash('hello'), 99162322);
+      expect(strToNumberHash('ABCDEFGHIJKLMNOPQRSTUVWXYZ' * 10000), 285059024);
+    });
   });
 }

@@ -26,3 +26,20 @@ String encodeBase64(String str) {
 String decodeBase64(String encodedStr) {
   return utf8.decode(base64Decode(encodedStr));
 }
+
+/// Returns the specified string as a hash value of type number.
+/// The return value can also be negative.
+int strToNumberHash(String str) {
+  if (str.isEmpty) {
+    return 0;
+  }
+
+  int hash = 0;
+
+  for (int i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.codeUnitAt(i);
+    hash &= 0xFFFFFFFF;
+  }
+
+  return hash;
+}

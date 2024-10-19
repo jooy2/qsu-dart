@@ -13,6 +13,7 @@
 - Add `sha256Hash` method
 - Add `encodeBase64` method
 - Add `decodeBase64` method
+- Add `strToNumberHash` method
 
 ## 0.0.4 (2024-10-02)
 
