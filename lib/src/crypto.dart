@@ -21,3 +21,8 @@ String sha256Hash(String str) {
 String encodeBase64(String str) {
   return base64Encode(utf8.encode(str));
 }
+
+/// Decodes an encoded base64 string to a plain string.
+String decodeBase64(String encodedStr) {
+  return utf8.decode(base64Decode(encodedStr));
+}

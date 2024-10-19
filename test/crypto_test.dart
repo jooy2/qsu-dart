@@ -24,5 +24,10 @@ void main() {
       expect(encodeBase64('this is test'), 'dGhpcyBpcyB0ZXN0');
       expect(encodeBase64('1234567890Test'), 'MTIzNDU2Nzg5MFRlc3Q=');
     });
+
+    test('decodeBase64', () {
+      expect(decodeBase64('dGhpcyBpcyB0ZXN0'), 'this is test');
+      expect(decodeBase64('MTIzNDU2Nzg5MFRlc3Q='), '1234567890Test');
+    });
   });
 }
