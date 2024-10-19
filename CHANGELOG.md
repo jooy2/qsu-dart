@@ -11,6 +11,7 @@
 - Add `md5Hash` method
 - Add `sha1Hash` method
 - Add `sha256Hash` method
+- Add `encodeBase64` method
 
 ## 0.0.4 (2024-10-02)
 

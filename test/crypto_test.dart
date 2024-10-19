@@ -19,5 +19,10 @@ void main() {
       expect(sha256Hash('qsu-md5'),
           '8c4cfec3ec79dc572958ea7f0e3cfd24b90d174969df9a4773b37b68498871ed');
     });
+
+    test('encodeBase64', () {
+      expect(encodeBase64('this is test'), 'dGhpcyBpcyB0ZXN0');
+      expect(encodeBase64('1234567890Test'), 'MTIzNDU2Nzg5MFRlc3Q=');
+    });
   });
 }

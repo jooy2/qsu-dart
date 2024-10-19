@@ -16,3 +16,8 @@ String sha1Hash(String str) {
 String sha256Hash(String str) {
   return sha256.convert(utf8.encode(str)).toString();
 }
+
+/// Base64-encode the given string.
+String encodeBase64(String str) {
+  return base64Encode(utf8.encode(str));
+}
