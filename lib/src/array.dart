@@ -118,3 +118,17 @@ List<dynamic> arrRepeat(dynamic array, int count) {
 
   return result;
 }
+
+/// Returns the number of duplicates for each unique value in the given array.
+/// The array values can only be of type `String` or `Number`.
+Map<String, int> arrCount(List<dynamic> array) {
+  final Map<String, int> result = {};
+
+  for (var i = 0; i < array.length; i++) {
+    String x = array[i].toString();
+
+    result[x] = (result[x] ?? 0) + 1;
+  }
+
+  return result;
+}
