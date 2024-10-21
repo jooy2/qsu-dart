@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.1 (2024--)
+
+- Add `arrCount` method
+
 ## 1.0.0 (2024-10-19)
 
 - Add `fileSize` method
