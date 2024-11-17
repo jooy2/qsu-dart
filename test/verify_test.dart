@@ -43,5 +43,11 @@ void main() {
       expect(isEmail('sub.domain.com'), false);
       expect(isEmail('1@1@a.com'), false);
     });
+
+    test('between', () {
+      expect(between([1, 10], 1), false);
+      expect(between([1, 10], 1, inclusive: true), true);
+      expect(between([10, 100], 11), true);
+    });
   });
 }

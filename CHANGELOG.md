@@ -3,6 +3,7 @@
 ## 1.0.1 (2024--)
 
 - Add `arrCount` method
+- Add `between` method
 
 ## 1.0.0 (2024-10-19)
 

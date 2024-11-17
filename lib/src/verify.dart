@@ -28,3 +28,14 @@ bool isEmail(String email) {
           r"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")
       .hasMatch(email);
 }
+
+/// Returns `true` if the first argument is in the range of the second argument (`[min, max]`).
+/// To allow the minimum and maximum values to be in the range, pass `true` for the third argument.
+bool between(List<num> range, num number, {bool inclusive = false}) {
+  final minM = range.reduce((a, b) => a < b ? a : b);
+  final maxM = range.reduce((a, b) => a > b ? a : b);
+
+  return inclusive
+      ? (number >= minM && number <= maxM)
+      : (number > minM && number < maxM);
+}
