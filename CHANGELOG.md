@@ -4,6 +4,7 @@
 
 - Add `arrCount` method
 - Add `between` method
+- Add `arrGroupByMaxCount` method
 
 ## 1.0.0 (2024-10-19)
 

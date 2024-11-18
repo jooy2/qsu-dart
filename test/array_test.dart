@@ -147,5 +147,36 @@ void main() {
       expect(arrCount(['a', 'a', 'a', 'b', 'c', 'b', 'a', 'd']),
           {'a': 4, 'b': 2, 'c': 1, 'd': 1});
     });
+
+    test('arrGroupByMaxCount', () {
+      expect(arrGroupByMaxCount([1, 2, 3], 1), [
+        [1],
+        [2],
+        [3]
+      ]);
+      expect(
+          arrGroupByMaxCount([
+            1,
+            2,
+            [],
+            4,
+            [[]]
+          ], 2),
+          [
+            [1, 2],
+            [[], 4],
+            [
+              [[]]
+            ]
+          ]);
+      expect(arrGroupByMaxCount([1, 2, 3, 4], 5), [
+        [1, 2, 3, 4]
+      ]);
+      expect(arrGroupByMaxCount([1, 1, 1, 1, 1, 1], 2), [
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ]);
+    });
   });
 }

@@ -132,3 +132,24 @@ Map<String, int> arrCount(List<dynamic> array) {
 
   return result;
 }
+
+/// Separates the data in the given array into a two-dimensional array containing only the maximum number of elements.
+/// For example, if you have an array of 6 data in 2 groups, this function will create a 2-dimensional array with 3 lengths.
+List<List<T>> arrGroupByMaxCount<T>(List<T> array, int maxLengthPerGroup) {
+  List<List<T>> result = [];
+  List<T> tempArray = [];
+
+  for (int i = 0; i < array.length; i++) {
+    if (tempArray.length == maxLengthPerGroup) {
+      result.add(tempArray);
+      tempArray = [];
+    }
+    tempArray.add(array[i]);
+  }
+
+  if (tempArray.isNotEmpty) {
+    result.add(tempArray);
+  }
+
+  return result;
+}
