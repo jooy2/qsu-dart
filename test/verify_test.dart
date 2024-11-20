@@ -49,5 +49,19 @@ void main() {
       expect(between([1, 10], 1, inclusive: true), true);
       expect(between([10, 100], 11), true);
     });
+
+    test('len', () {
+      expect(len('12345'), 5);
+      expect(len(12345), 5);
+      expect(len(() => '123'), 3);
+      expect(len([1, 2, 3, 4]), 4);
+      expect(len({'hello': 'world', 'lorem': 'ipsum'}), 2);
+      expect(
+          len([
+            {'hello': 1, 'world': 2},
+            {'lorem': 3}
+          ]),
+          2);
+    });
   });
 }

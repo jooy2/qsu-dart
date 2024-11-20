@@ -39,3 +39,26 @@ bool between(List<num> range, num number, {bool inclusive = false}) {
       ? (number >= minM && number <= maxM)
       : (number > minM && number < maxM);
 }
+
+/// Returns the length of any type of data. If the argument value is `null` or `undefined`, `0` is returned.
+int len(dynamic data) {
+  if (data == null) {
+    return 0;
+  }
+
+  if (data is List) {
+    return data.length;
+  } else if (data is Map) {
+    return data.keys.length;
+  } else if (data is num || data is BigInt) {
+    return data.toString().length;
+  } else if (data is bool) {
+    return data ? 4 : 5;
+  } else if (data is Function) {
+    return data().toString().length;
+  } else if (data is String) {
+    return data.length;
+  } else {
+    return 0;
+  }
+}

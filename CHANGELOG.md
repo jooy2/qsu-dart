@@ -6,6 +6,7 @@
 - Add `between` method
 - Add `arrGroupByMaxCount` method
 - Add `numRandom` method
+- Add `len` method
 
 ## 1.0.0 (2024-10-19)
 
