@@ -62,3 +62,17 @@ int len(dynamic data) {
     return 0;
   }
 }
+
+/// Returns `true` if the values given in the `conditions` array are true at least `minimumCount` times.
+bool isTrueMinimumNumberOfTimes(List<bool> conditions, {int? minimumCount}) {
+  final int conditionLength = conditions.length;
+  int trueCount = 0;
+
+  for (int i = 0; i < conditionLength; i++) {
+    if (conditions[i]) {
+      trueCount += 1;
+    }
+  }
+
+  return trueCount >= (minimumCount ?? 1);
+}
