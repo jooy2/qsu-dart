@@ -16,7 +16,7 @@ void main() {
           'a=%3D&b=%26&c=%25');
       expect(objToQueryString({'a': '가나다'}), 'a=%EA%B0%80%EB%82%98%EB%8B%A4');
     });
-    
+
     test('objToArray', () {
       expect(objToArray({}), []);
       expect(objToArray({'a': 1, 'b': 2, 'c': 3}), [
@@ -70,6 +70,43 @@ void main() {
               {'a': 1}
             ]
           ]);
+    });
+
+    test('objTo1d', () {
+      expect(objTo1d({}), {});
+      expect(objTo1d({'a': 1, 'b': 2, 'c': 3}), {'a': 1, 'b': 2, 'c': 3});
+      expect(
+          objTo1d({
+            'a': 1,
+            'b': {'aa': 1, 'bb': 2},
+            'c': 3
+          }),
+          {'a': 1, 'b.aa': 1, 'b.bb': 2, 'c': 3});
+      expect(
+          objTo1d({
+            'a': 1,
+            'b': {'aa': 1, 'bb': 2},
+            'c': 3
+          }, '='),
+          {'a': 1, 'b=aa': 1, 'b=bb': 2, 'c': 3});
+      expect(
+          objTo1d({
+            'a': 1,
+            'b': {
+              'aa': {
+                'aaa': {'aaaa': 1, 'bbbb': null}
+              },
+              'bb': 2
+            },
+            'c': 3
+          }),
+          {
+            'a': 1,
+            'b.aa.aaa.aaaa': 1,
+            'b.aa.aaa.bbbb': null,
+            'b.bb': 2,
+            'c': 3
+          });
     });
   });
 }

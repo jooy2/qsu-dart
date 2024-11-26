@@ -32,3 +32,32 @@ List<dynamic> objToArray(Map<String, dynamic> obj, [bool recursive = false]) {
 
   return convertToArray(obj);
 }
+
+/// Merges objects from the given object to the top level of the child items and displays the key names in steps, using a delimiter (`.` by default) instead of the existing keys.
+/// For example, if an object `a` has keys `b`, `c`, and `d`, the `a` key is not displayed, and the keys and values `a.b`, `a.c`, and `a.d` are displayed in the parent step.
+Map<String, dynamic> objTo1d(Map<String, dynamic> obj,
+    [String separator = '.']) {
+  if (separator.isEmpty) {
+    throw ArgumentError('`separator` must have value at least 1 character.');
+  }
+
+  Map<String, dynamic> convertObjectTo1d(Map<String, dynamic> o,
+      [String objPath = '']) {
+    Map<String, dynamic> result = {};
+    bool isFirstDepth = objPath.isEmpty;
+
+    o.forEach((key, value) {
+      String newObjPath = isFirstDepth ? key : '$objPath$separator$key';
+
+      if (value is Map<String, dynamic>) {
+        result.addAll(convertObjectTo1d(value, newObjPath));
+      } else {
+        result[newObjPath] = value;
+      }
+    });
+
+    return result;
+  }
+
+  return convertObjectTo1d(obj);
+}

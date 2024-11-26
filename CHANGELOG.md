@@ -10,6 +10,7 @@
 - Add `isTrueMinimumNumberOfTimes` method
 - Add `objToQueryString` method
 - Add `objToArray` method
+- Add `objTo1d` method
 
 ## 1.0.0 (2024-10-19)
 
