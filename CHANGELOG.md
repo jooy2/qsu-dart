@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.1 (2024-11-26)
+
+- Fix `objTo1d` parameters
+
 ## 1.1.0 (2024-11-26)
 
 - Add `arrCount` method
