@@ -9,6 +9,7 @@
 - Add `len` method
 - Add `isTrueMinimumNumberOfTimes` method
 - Add `objToQueryString` method
+- Add `objToArray` method
 
 ## 1.0.0 (2024-10-19)
 

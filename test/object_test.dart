@@ -16,5 +16,60 @@ void main() {
           'a=%3D&b=%26&c=%25');
       expect(objToQueryString({'a': '가나다'}), 'a=%EA%B0%80%EB%82%98%EB%8B%A4');
     });
+    
+    test('objToArray', () {
+      expect(objToArray({}), []);
+      expect(objToArray({'a': 1, 'b': 2, 'c': 3}), [
+        ['a', 1],
+        ['b', 2],
+        ['c', 3]
+      ]);
+      expect(
+          objToArray({
+            'a': 1,
+            'b': {
+              'aa': 1,
+              'bb': 2,
+              'cc': {'aaa': 1}
+            },
+            'c': 3
+          }, true),
+          [
+            ['a', 1],
+            [
+              'b',
+              [
+                ['aa', 1],
+                ['bb', 2],
+                [
+                  'cc',
+                  [
+                    ['aaa', 1]
+                  ]
+                ]
+              ]
+            ],
+            ['c', 3]
+          ]);
+      expect(
+          objToArray({
+            'a': 1.234,
+            'b': 'str',
+            'c': [1, 2, 3],
+            'd': {'a': 1}
+          }),
+          [
+            ['a', 1.234],
+            ['b', 'str'],
+            [
+              'c',
+              [1, 2, 3]
+            ],
+            [
+              'd',
+              {'a': 1}
+            ]
+          ]);
+    });
   });
 }
