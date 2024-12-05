@@ -87,7 +87,7 @@ void main() {
             'a': 1,
             'b': {'aa': 1, 'bb': 2},
             'c': 3
-          }, '='),
+          }, separator: '='),
           {'a': 1, 'b=aa': 1, 'b=bb': 2, 'c': 3});
       expect(
           objTo1d({
