@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.1.2 (2025--)
+## 1.1.2 (2025-02-14)
 
 - Add `debounce` method
 - Add `isUrl` method
