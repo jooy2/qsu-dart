@@ -4,6 +4,42 @@ bool isObject(dynamic data) {
   return data != null && data is Map;
 }
 
+/// It compares the first argument value as the left operand and the argument values given thereafter as the right operand, and returns `true` if the values are all the same.
+bool isEqual(dynamic leftOperand, [dynamic right1, dynamic right2]) {
+  if (right1 == null && right2 == null) {
+    return true;
+  }
+
+  final List<dynamic> rightOperands;
+
+  if (right2 == null) {
+    rightOperands = (right1 is List) ? right1 : [right1];
+  } else {
+    rightOperands = [right1, right2];
+  }
+
+  for (var item in rightOperands) {
+    if (leftOperand == item) {
+      continue;
+    } else if (leftOperand is num && item is String) {
+      final parsed = num.tryParse(item);
+
+      if (parsed == null || parsed != leftOperand) {
+        return false;
+      }
+    } else if (leftOperand is String && item is num) {
+      final parsed = num.tryParse(leftOperand);
+
+      if (parsed == null || parsed != item) {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
+
 /// Returns `true` if the first string argument contains the second argument "string" or "one or more of the strings listed in the array". If the exact value is `true`, it returns true only for an exact match.
 bool contains(dynamic str, dynamic search, {bool exact = false}) {
   if (search.runtimeType == String) {
@@ -32,7 +68,7 @@ bool isUrl(String url, [bool withProtocol = false, bool strict = false]) {
   }
 
   final formattedUrl =
-      (withProtocol && !url.contains('://')) ? 'https://$url' : url;
+  (withProtocol && !url.contains('://')) ? 'https://$url' : url;
 
   try {
     final uri = Uri.parse(formattedUrl);
@@ -55,7 +91,7 @@ bool is2dArray(List<dynamic> array) {
 /// Checks if the given argument value is a valid email.
 bool isEmail(String email) {
   return RegExp(
-          r"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")
+      r"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")
       .hasMatch(email);
 }
 
@@ -81,11 +117,15 @@ int len(dynamic data) {
   } else if (data is Map) {
     return data.keys.length;
   } else if (data is num || data is BigInt) {
-    return data.toString().length;
+    return data
+        .toString()
+        .length;
   } else if (data is bool) {
     return data ? 4 : 5;
   } else if (data is Function) {
-    return data().toString().length;
+    return data()
+        .toString()
+        .length;
   } else if (data is String) {
     return data.length;
   } else {

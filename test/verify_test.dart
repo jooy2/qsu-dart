@@ -22,6 +22,18 @@ void main() {
       expect(isObject({'a': {}, 'b': []}), true);
     });
 
+    test('isEqual', () {
+      const val1 = 'abc';
+      const val2 = 'abc';
+      const val3 = 'abc';
+
+      expect(isEqual(1, [1, 2, 3]), false);
+      expect(isEqual('abc', [val1, val2, val3]), true);
+      expect(isEqual('123', ['123', 123]), true);
+      expect(isEqual('123', ['123', 123, 123, 123]), true);
+      expect(isEqual(123, '123'), true);
+    });
+
     test('contains', () {
       expect(contains('12345', '3'), true);
       expect(contains('12345', '10'), false);

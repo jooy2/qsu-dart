@@ -5,6 +5,7 @@
 - Add `debounce` method
 - Add `isUrl` method
 - Add `isObject` method
+- Add `isEqual` method
 
 ## 1.1.1 (2024-11-26)
 
