@@ -68,6 +68,24 @@ bool isEqualStrict(dynamic leftOperand, [dynamic right1, dynamic right2]) {
   return true;
 }
 
+/// Returns true if the passed data is empty or has a length of 0.
+bool isEmpty(dynamic data) {
+  if (data == null) {
+    return true;
+  }
+  if (data is String) {
+    return data.isEmpty;
+  }
+  if (data is List) {
+    return data.isEmpty;
+  }
+  if (data is Map) {
+    return data.isEmpty;
+  }
+
+  return false;
+}
+
 /// Returns `true` if the first string argument contains the second argument "string" or "one or more of the strings listed in the array". If the exact value is `true`, it returns true only for an exact match.
 bool contains(dynamic str, dynamic search, {bool exact = false}) {
   if (search.runtimeType == String) {

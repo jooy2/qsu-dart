@@ -1,5 +1,5 @@
 import 'package:qsu/qsu.dart';
-import 'package:test/test.dart' hide contains;
+import 'package:test/test.dart' hide contains, isEmpty;
 
 void main() {
   group('Verify', () {
@@ -44,6 +44,20 @@ void main() {
       expect(isEqualStrict('123', ['123', 123]), false);
       expect(isEqualStrict('123', ['123', '123']), true);
       expect(isEqualStrict(123, '123'), false);
+    });
+
+    test('isEmpty', () {
+      expect(isEmpty(''), true);
+      expect(isEmpty('1234'), false);
+      expect(isEmpty(1234), false);
+      expect(isEmpty(1.234), false);
+      expect(isEmpty(null), true);
+      expect(isEmpty([]), true);
+      expect(isEmpty([{}]), false);
+      expect(isEmpty([[]]), false);
+      expect(isEmpty(['1234']), false);
+      expect(isEmpty({}), true);
+      expect(isEmpty({'a': '1234'}), false);
     });
 
     test('contains', () {

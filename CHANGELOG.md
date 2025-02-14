@@ -7,6 +7,7 @@
 - Add `isObject` method
 - Add `isEqual` method
 - Add `isEqualStrict` method
+- Add `isEmpty` method
 
 ## 1.1.1 (2024-11-26)
 
