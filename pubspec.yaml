@@ -6,7 +6,7 @@ repository: https://github.com/jooy2/qsu-dart
 homepage: https://qsu.cdget.com
 
 environment:
-  sdk: ^3.0.5
+  sdk: ^3.5.0
 
 dependencies:
   path: ^1.9.1
