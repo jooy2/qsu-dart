@@ -3,6 +3,7 @@
 ## 1.1.2 (2025--)
 
 - Add `debounce` method
+- Add `isUrl` method
 
 ## 1.1.1 (2024-11-26)
 

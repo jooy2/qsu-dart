@@ -12,6 +12,18 @@ void main() {
       expect(contains('AB', ['AB', 'C', 'D'], exact: true), true);
     });
 
+    test('isUrl', () {
+      expect(isUrl(''), false);
+      expect(isUrl('https://'), false);
+      expect(isUrl('www.google.com'), false);
+      expect(isUrl('www.google.com', true), true);
+      expect(isUrl('https://google.com'), true);
+      expect(isUrl('https://google.com', true), true);
+      expect(isUrl('https://google'), true);
+      expect(isUrl('https://google', false, true), false);
+      expect(isUrl('https://google.com?query=qsu'), true);
+    });
+
     test('is2dArray', () {
       expect(is2dArray([]), false);
       expect(is2dArray([[], []]), true);

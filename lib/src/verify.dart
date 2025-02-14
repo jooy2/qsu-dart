@@ -17,6 +17,30 @@ bool contains(dynamic str, dynamic search, {bool exact = false}) {
   return false;
 }
 
+/// Returns `true` if the given data is in the correct URL format.
+/// If withProtocol is `true`, it is automatically appended to the URL when the protocol does not exist.
+/// If strict is `true`, URLs without commas (`.`) return `false`.
+bool isUrl(String url, [bool withProtocol = false, bool strict = false]) {
+  if (strict && !url.contains('.')) {
+    return false;
+  }
+
+  final formattedUrl =
+      (withProtocol && !url.contains('://')) ? 'https://$url' : url;
+
+  try {
+    final uri = Uri.parse(formattedUrl);
+
+    if (uri.scheme.isEmpty || uri.host.isEmpty) {
+      return false;
+    }
+  } catch (e) {
+    return false;
+  }
+
+  return true;
+}
+
 /// Returns `true` if the given array is a two-dimensional array.
 bool is2dArray(List<dynamic> array) {
   return array.any((element) => element is List);
