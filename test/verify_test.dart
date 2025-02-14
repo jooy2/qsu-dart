@@ -73,11 +73,11 @@ void main() {
       expect(isUrl(''), false);
       expect(isUrl('https://'), false);
       expect(isUrl('www.google.com'), false);
-      expect(isUrl('www.google.com', true), true);
+      expect(isUrl('www.google.com', withProtocol: true), true);
       expect(isUrl('https://google.com'), true);
-      expect(isUrl('https://google.com', true), true);
+      expect(isUrl('https://google.com', withProtocol: true), true);
       expect(isUrl('https://google'), true);
-      expect(isUrl('https://google', false, true), false);
+      expect(isUrl('https://google', withProtocol: false, strict: true), false);
       expect(isUrl('https://google.com?query=qsu'), true);
     });
 
