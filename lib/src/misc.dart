@@ -1,3 +1,5 @@
+import 'dart:async';
+
 /// Sleep function using Promise.
 Future<void> sleep(int delay) async {
   await Future.delayed(Duration(milliseconds: delay));
@@ -16,4 +18,18 @@ List<dynamic> funcTimes(int times, dynamic iteratee) {
       return iteratee;
     }
   }, growable: false);
+}
+
+/// When the given function is executed repeatedly, the function is called if it has not been called again within the specified timeout.
+/// This function is used when a small number of function calls are needed for repetitive input events.
+Function debounce(Function func, int timeout) {
+  Timer? timer;
+
+  return ([List<dynamic> args = const []]) {
+    timer?.cancel();
+
+    timer = Timer(Duration(milliseconds: timeout), () {
+      Function.apply(func, args);
+    });
+  };
 }

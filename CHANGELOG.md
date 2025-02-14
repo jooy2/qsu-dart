@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.2 (2025--)
+
+- Add `debounce` method
+
 ## 1.1.1 (2024-11-26)
 
 - Fix `objTo1d` parameters
