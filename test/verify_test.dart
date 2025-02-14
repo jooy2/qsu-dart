@@ -34,6 +34,18 @@ void main() {
       expect(isEqual(123, '123'), true);
     });
 
+    test('isEqualStrict', () {
+      const val1 = 'abc';
+      const val2 = 'abc';
+      const val3 = 'abc';
+
+      expect(isEqualStrict(1, [1, 2, 3, 4, 5]), false);
+      expect(isEqualStrict('abc', [val1, val2, val3]), true);
+      expect(isEqualStrict('123', ['123', 123]), false);
+      expect(isEqualStrict('123', ['123', '123']), true);
+      expect(isEqualStrict(123, '123'), false);
+    });
+
     test('contains', () {
       expect(contains('12345', '3'), true);
       expect(contains('12345', '10'), false);
