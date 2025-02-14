@@ -3,6 +3,25 @@ import 'package:test/test.dart' hide contains;
 
 void main() {
   group('Verify', () {
+    test('isObject', () {
+      expect(isObject('{}'), false);
+      expect(isObject(true), false);
+      expect(isObject(false), false);
+      expect(isObject(null), false);
+      expect(isObject(1), false);
+      expect(isObject([]), false);
+      expect(isObject(() => '123'), false);
+      expect(isObject({}), true);
+      expect(isObject([1, 2]), false);
+      expect(
+          isObject([
+            {'a': 1, 'b': 2}
+          ]),
+          false);
+      expect(isObject({'a': 1, 'b': 2}), true);
+      expect(isObject({'a': {}, 'b': []}), true);
+    });
+
     test('contains', () {
       expect(contains('12345', '3'), true);
       expect(contains('12345', '10'), false);

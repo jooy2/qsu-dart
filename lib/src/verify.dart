@@ -1,3 +1,9 @@
+/// Check whether the given data is of type `Object`.
+/// Returns `false` for other data types including `Array`.
+bool isObject(dynamic data) {
+  return data != null && data is Map;
+}
+
 /// Returns `true` if the first string argument contains the second argument "string" or "one or more of the strings listed in the array". If the exact value is `true`, it returns true only for an exact match.
 bool contains(dynamic str, dynamic search, {bool exact = false}) {
   if (search.runtimeType == String) {
