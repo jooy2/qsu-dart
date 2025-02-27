@@ -19,13 +19,6 @@ It is supported in one module without the need to
 Installing and using the package and defining all the utility methods can be found on the documentation page
 below: https://qsu.cdget.com/getting-started/installation-dart
 
-## Family Packages
-
-Family packages that use the same architecture as `qsu` (currently only supports JavaScript).
-
-- **[qsu-fs](https://github.com/jooy2/qsu-fs)**: File listing and management utilities
-- **[qsu-web](https://github.com/jooy2/qsu-web)**: Utilities for website front-end & back-end services
-
 ## Contributing
 
 Anyone can contribute to the project by reporting new issues or submitting a pull request. For more information, please
