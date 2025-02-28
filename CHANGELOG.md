@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.4 (2025-02-28)
+
+- Update documentation
+
 ## 1.1.3 (2025-02-14)
 
 - Fix `isUrl` parameters
